@@ -63,5 +63,4 @@ let holidays = [];
             startPhotoInterval();
         });
 
-        // Fetch and populate holiday data when the page loads
         fetchHolidays();

@@ -4,65 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holiday Showcase</title>
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script defer src="./main.js"></script>
-    <style>
-        .card {
-            height: 90vh;
-            width: 100%;
-            max-width: 1500px;
-            position: relative;
-            margin: 0 auto; /* Center the card horizontally */
-        }
-
-        .card-img {
-            object-fit: cover;
-            height: 100%;
-            /* width: 100%; */
-        }
-
-        .card-body {
-            position: absolute;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .arrow-left {
-            left: 10px;
-        }
-
-        .arrow-right {
-            right: 10px;
-        }
-
-        .stars {
-            display: inline-block;
-        }
-
-        .stars::before {
-            content: '★★★★★';
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, gold var(--rating), gray var(--rating));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <div class="container mt-5 position-relative">
