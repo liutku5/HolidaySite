@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script defer src="./main.js"></script>
     <style>
-        .carousel-item {
-            height: 70vh;
+        .card {
+            height: 90vh;
+            width: 100%;
+            max-width: 1500px;
+            position: relative;
+            margin: 0 auto; /* Center the card horizontally */
         }
 
-        .carousel-item img {
+        .card-img {
             object-fit: cover;
             height: 100%;
-            width: 100%;
-        }
-
-        .card {
-            height: 100%;
+            /* width: 100%; */
         }
 
         .card-body {
@@ -30,22 +30,49 @@
             width: 100%;
             padding: 10px;
         }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .stars {
+            display: inline-block;
+        }
+
+        .stars::before {
+            content: '★★★★★';
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, gold var(--rating), gray var(--rating));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body>
-    <div id="holidayCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
-        <div class="carousel-inner" id="holidayContainer"></div>
-        <a class="carousel-control-prev" href="#holidayCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#holidayCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <div class="container mt-5 position-relative">
+        <button id="prevHoliday" class="arrow arrow-left">&larr;</button>
+        <div id="holidayContainer"></div>
+        <button id="nextHoliday" class="arrow arrow-right">&rarr;</button>
     </div>
 
     <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
