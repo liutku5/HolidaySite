@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="./img/pngegg.png" alt="" height="70px" width="70px">
-        <a class="navbar-brand" href="#">Holiday Trips</a>
+        <a class="navbar-brand" href="./main.html">Holiday Trips</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,10 +21,50 @@
                     <a class="nav-link" href="./main.html">Holiday Create</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Holiday Show</a>
+                    <a class="nav-link" href="./index.html">Choose your holiday</a>
                 </li>
             </ul>
         </div>
     </nav>
+    <div id="alertsContainer"></div>
+<div class="container mt-5">
+    <h3 id="forma">Create a New Holiday</h3>
+    <form id="holidayForm">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country" name="country" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" class="form-control" id="duration" name="duration" required>
+        </div>
+        <div class="form-group">
+            <label for="season">Season</label>
+            <input type="text" class="form-control" id="season" name="season" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="photos">Photos</label>
+            <textarea class="form-control" id="photos" name="photos" placeholder="Enter photo URLs separated by commas" required></textarea>
+            <small id="photosHelp" class="form-text text-muted">Enter multiple URLs separated by commas (e.g., https://example.com/photo1.jpg, https://example.com/photo2.jpg)</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Holiday</button>
+    </form>
+</div>
 </body>
 </html>

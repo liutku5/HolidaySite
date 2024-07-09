@@ -63,3 +63,11 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.form-section {
+    margin-top: 20px;
+}
+
+#forma {
+    margin-top: -45px;
+}
