@@ -1,9 +1,20 @@
+body{
+    /* text-align: center; */
+    background-image: url(./img/background.jpg);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: rgb(0, 0, 0); 
+   
+}
+
 .card {
     height: 90vh;
     width: 100%;
     max-width: 1300px;
     /* position: relative; */
     margin: 0 auto; 
+    margin-top: -45px;
 }
 
 .card-img {
@@ -34,11 +45,11 @@
 }
 
 .arrow-left {
-    left: 10px;
+    left: 17px;
 }
 
 .arrow-right {
-    right: 10px;
+    right: 17px;
 }
 
 .stars {
