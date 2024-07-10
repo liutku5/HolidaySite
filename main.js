@@ -9,11 +9,21 @@ form.addEventListener("submit", createHoliday);
 function createHoliday(event) {
     event.preventDefault();
     const form = event.target;
-    const formData = {};
+    const formData = {
+        photos : []
+    };
 
     for (let field of form.elements) {
         if (field.name) {
-            formData[field.name] = field.value;
+            if(field.name == "photo1"){
+                formData["photos"][0] = field.value;
+            }
+            else if(field.name == "photo2"){
+                formData["photos"][1] = field.value;
+            }
+            else{
+                formData[field.name] = field.value;
+            }
         }
     }
 
@@ -22,9 +32,6 @@ function createHoliday(event) {
 
     fetch(`${baseUrl}${port}/createHoliday`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
         body: JSON.stringify(formData)
     })
     .then(response => {
@@ -33,10 +40,6 @@ function createHoliday(event) {
             form.reset();
         }
     })
-    .catch(error => {
-        console.error("Error creating holiday:", error);
-        showAlert("Failed to create holiday");
-    });
 }
 
 function showAlert(status) {
