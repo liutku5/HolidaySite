@@ -118,9 +118,9 @@ function editHoliday(id) {
     // Set up save changes button
     document.getElementById('saveEditHoliday').onclick = () => saveEditedHoliday(id);
 }
-
+// klada
 function saveEditedHoliday(id) {
-    console.log(`Attempting to update holiday with id: ${id}`);
+    console.log(`Attempting to update holiday with id: ${id}`); 
     const formData = {
         photos: []
     };
