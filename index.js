@@ -2,7 +2,7 @@ let holidays = [];
 let currentHolidayIndex = 0;
 let currentPhotoIndex = 0;
 let photoInterval;
-
+const form = document.getElementById('editHolidayForm');
 async function fetchHolidays() {
     try {
         const response = await fetch('http://localhost:8000/getHolidays');
@@ -76,7 +76,6 @@ function editHoliday(id) {
 
     const form = document.getElementById('editHolidayForm');
     form.innerHTML = `
-         <div id="alertsContainer"></div>
         <div class="form-group">
             <label for="editTitle">Title</label>
             <input type="text" class="form-control" id="editTitle" name="title" value="${holiday.title}" required>
@@ -121,28 +120,32 @@ function editHoliday(id) {
 }
 
 function saveEditedHoliday(id) {
-    const form = document.getElementById('editHolidayForm');
-    const formData = {};
+    console.log(`Attempting to update holiday with id: ${id}`);
+    const formData = {
+        photos: []
+    };
 
     for (let field of form.elements) {
         if (field.name) {
-            if (field.name === 'photos') {
-                formData[field.name] = field.value.split(',').map(photo => photo.trim());
+            if (field.name === "photo1") {
+                formData.photos[0] = field.value;
+            } else if (field.name === "photo2") {
+                formData.photos[1] = field.value;
             } else {
                 formData[field.name] = field.value;
             }
         }
     }
 
-    fetch(`http://localhost:8000/updateHoliday?id=${id}`, {
+    fetch(`http://localhost:8000/updateHoliday`, {
         method: "POST",
-        body: JSON.stringify(formData)
+        body: JSON.stringify({"id":id})
     })
     .then(response => {
         if (response.ok) {
             $('#editHolidayModal').modal('hide');
             fetchHolidays();
-            showAlert("Holiday was update!");
+            showAlert("Holiday was updated!");
         } else {
             console.error("Failed to update holiday");
         }
@@ -155,7 +158,7 @@ function saveEditedHoliday(id) {
 function showAlert(status) {
     alertsContainer.innerHTML = `
         <div class="alert alert-success">
-            <strong>Success!</strong> Holiday was update! ${status}.
+            <strong>Success!</strong>${status}
         </div>
     `;
     setTimeout(() => {
@@ -164,16 +167,18 @@ function showAlert(status) {
 }
 
 function deleteHoliday(id) {
-    console.log(id);
-    // const formData = { "id": userId };
-    fetch(`http://localhost:8000/deleteHoliday?id=${id}`, {
-        method: "POST"
+    console.log(`Attempting to delete holiday with id: ${id}`);
+    fetch(`http://localhost:8000/deleteHoliday`, {
+        method: "POST",
+        body: JSON.stringify({"id":id})
     })
     .then(response => {
         if (response.ok) {
             fetchHolidays();
+            showAlert("Holiday was deleted!");
+            console.log(`Successfully deleted holiday with id: ${id}`);
         } else {
-            console.error("Failed to delete holiday");
+            console.error(`Failed to delete holiday with id: ${id}. Status: ${response.status}`);
         }
     })
     .catch(error => {
@@ -187,8 +192,8 @@ function addRating(id, rating) {
 
     holiday.rating.push(parseInt(rating));
 
-    fetch(`http://localhost:8000/updateHoliday?id=${id}`, {
-        method: "PUT",
+    fetch(`http://localhost:8000/updaterRating?id=${id}`, {
+        method: "POST",
         body: JSON.stringify({ rating: holiday.rating })
     })
     .then(response => {
