@@ -112,30 +112,22 @@ function editHoliday(id) {
         </div>
     `;
 
-    // Show the modal
     $('#editHolidayModal').modal('show');
 
-    // Set up save changes button
     document.getElementById('saveEditHoliday').onclick = () => saveEditedHoliday(id);
 }
 // klada
 function saveEditedHoliday(id) {
     console.log(`Attempting to update holiday with id: ${id}`); 
     const holiday = holidays.find(h => h.id === id);
-    if (!holiday) {
-        console.error("Holiday not found");
-        return;
-    }
-    
+   
     const formData = {
-        photos: holiday.photos.slice(), // Use current photos as default
-        rating: holiday.rating // Keep existing ratings
+        photos: holiday.photos.slice(), 
+        rating: holiday.rating 
     };
 
-    // Get form elements
     const form = document.getElementById('editHolidayForm');
 
-    // Update formData with new values from the form
     for (let field of form.elements) {
         if (field.name) {
             if (field.name === "photo1" && field.value.trim()) {
@@ -148,7 +140,6 @@ function saveEditedHoliday(id) {
         }
     }
 
-    // Remove null or undefined entries in the photos array
     formData.photos = formData.photos.filter(photo => photo);
 
     fetch(`http://localhost:8000/updateHoliday`, {
@@ -191,6 +182,9 @@ function deleteHoliday(id) {
             fetchHolidays();
             showAlert("Holiday was deleted!");
             console.log(`Successfully deleted holiday with id: ${id}`);
+            setTimeout(() => {
+                location.reload(); 
+            }, 1000);
         } else {
             console.error(`Failed to delete holiday with id: ${id}. Status: ${response.status}`);
         }

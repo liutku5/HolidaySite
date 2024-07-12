@@ -1,0 +1,32 @@
+body{
+    /* text-align: center; */
+    background-image: url(/img/background.jpg);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: rgb(0, 0, 0); 
+   
+}
+.showcase-container {
+    text-align: center;
+    margin-top: 50px;
+}
+.showcase-photo {
+    width: 500px; /* Set the desired width */
+    height: 300px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the entire area */
+}
+
+.intro-section {
+    text-align: center;
+    margin-top: 30px;
+}
+.intro-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.intro-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
