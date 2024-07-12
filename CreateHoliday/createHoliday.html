@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holiday Showcase</title>
+    <title>Holiday form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/main.css">
     <script defer src="./createHoliday.js"></script>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,36 +30,46 @@
         </div>
     </nav>
     <div id="alertsContainer"></div>
-    <div class="container mt-5 position-relative">
-        <button id="prevHoliday" class="arrow arrow-left">&larr;</button>
-        <div id="holidayContainer"></div>
-        <button id="nextHoliday" class="arrow arrow-right">&rarr;</button>
-    </div>
-    <div class="modal fade" id="editHolidayModal" tabindex="-1" role="dialog" aria-labelledby="editHolidayModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editHolidayModalLabel">Edit Holiday</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="editHolidayForm">
-                        <!-- Form fields will be populated here dynamically -->
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="saveEditHoliday">Save changes</button>
-                </div>
-            </div>
+<div class="container mt-5">
+    <h3 id="forma">Create a New Holiday</h3>
+    <form id="holidayForm">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
         </div>
-    </div>
-
-    <!-- jQuery and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country" name="country" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" class="form-control" id="duration" name="duration" required>
+        </div>
+        <div class="form-group">
+            <label for="season">Season</label>
+            <input type="text" class="form-control" id="season" name="season" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="photos">Photos</label>
+            <textarea class="form-control" id="photos" name="photo1" placeholder="Enter photo URLs separated by commas" required></textarea>
+            <label for="photos">Photos</label>
+            <textarea class="form-control" id="photos" name="photo2" placeholder="Enter photo URLs separated by commas" required></textarea>
+            <!-- <small id="photosHelp" class="form-text text-muted">Enter multiple URLs separated by commas (e.g., https://example.com/photo1.jpg, https://example.com/photo2.jpg)</small> -->
+        </div>
+        <button type="submit" class="btn btn-primary">Create Holiday</button>
+    </form>
+</div>
 </body>
 </html>
