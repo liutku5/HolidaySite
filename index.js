@@ -121,25 +121,39 @@ function editHoliday(id) {
 // klada
 function saveEditedHoliday(id) {
     console.log(`Attempting to update holiday with id: ${id}`); 
+    const holiday = holidays.find(h => h.id === id);
+    if (!holiday) {
+        console.error("Holiday not found");
+        return;
+    }
+    
     const formData = {
-        photos: []
+        photos: holiday.photos.slice(), // Use current photos as default
+        rating: holiday.rating // Keep existing ratings
     };
 
+    // Get form elements
+    const form = document.getElementById('editHolidayForm');
+
+    // Update formData with new values from the form
     for (let field of form.elements) {
         if (field.name) {
-            if (field.name === "photo1") {
+            if (field.name === "photo1" && field.value.trim()) {
                 formData.photos[0] = field.value;
-            } else if (field.name === "photo2") {
+            } else if (field.name === "photo2" && field.value.trim()) {
                 formData.photos[1] = field.value;
-            } else {
+            } else if (field.name !== "photo1" && field.name !== "photo2") {
                 formData[field.name] = field.value;
             }
         }
     }
 
+    // Remove null or undefined entries in the photos array
+    formData.photos = formData.photos.filter(photo => photo);
+
     fetch(`http://localhost:8000/updateHoliday`, {
         method: "POST",
-        body: JSON.stringify({"id":id})
+        body: JSON.stringify(formData)
     })
     .then(response => {
         if (response.ok) {
