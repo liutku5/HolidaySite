@@ -7,7 +7,7 @@ let holidays = [];
                 holidays = await response.json();
                 if (holidays.length > 0) {
                     populateShowcase(holidays[currentIndex]);
-                    setInterval(updateShowcase, 5000); // Update every 5 seconds
+                    setInterval(updateShowcase, 3000); // Update every 5 seconds
                 }
             } catch (error) {
                 console.error('Error fetching holidays:', error);
