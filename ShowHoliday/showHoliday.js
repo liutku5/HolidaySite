@@ -76,6 +76,7 @@ function editHoliday(id) {
 
     const form = document.getElementById('editHolidayForm');
     form.innerHTML = `
+        <input type="hidden" id="editId" name="id" value="${holiday.id}">
         <div class="form-group">
             <label for="editTitle">Title</label>
             <input type="text" class="form-control" id="editTitle" name="title" value="${holiday.title}" required>
